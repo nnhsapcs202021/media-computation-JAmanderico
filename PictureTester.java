@@ -1,3 +1,4 @@
+
 /**
  * This class contains class (static) methods
  * that will help you test the Picture class 
@@ -32,9 +33,18 @@ public class PictureTester
         Picture temple = new Picture("temple.jpg");
         temple.explore();
         temple.mirrorTemple();
-        temple.explore();
+        temple.explore();   
     }
-
+    
+    /**Method to test MirrorArms*/
+    public static void testMirrorArms()
+    {
+        Picture snowman = new Picture("snowman.jpg");
+        snowman.explore();
+        snowman.mirrorArms();
+        snowman.explore();
+    }
+    
     /** Method to test edgeDetection */
     public static void testEdgeDetection()
     {
@@ -128,9 +138,9 @@ public class PictureTester
         //testMirrorVertical();
         //testMirrorVerticalRightToLeft();
         //testMirrorHorizontal();
-        testMirrorHorizontalBotToTop();
+        //testMirrorHorizontalBotToTop();
         //testMirrorTemple();
-        //testMirrorArms();
+        testMirrorArms();
         //testMirrorGull();
         //testMirrorDiagonal();
         //testCollage();

@@ -282,20 +282,52 @@ public class Picture extends SimplePicture
         Pixel[][] pixels = this.getPixels2D();
 
         // loop through the rows
-        for (int row = 27; row < 97; row++)
+        for ( int row = 27; row < 97; row++ )
         {
             // loop from 13 to just before the mirror point
-            for (int col = 13; col < mirrorPoint; col++)
+            for ( int col = 13; col < mirrorPoint; col++ )
             {
-
-                leftPixel = pixels[row][col];      
-                rightPixel = pixels[row]                       
-                [mirrorPoint - col + mirrorPoint];
+                count += 1;
+                leftPixel = pixels[row][col];      // called 18,410 times = (97 - 27 = 70) * (276 - 13 = 263)
+                 rightPixel = pixels[row]
+                                 [mirrorPoint - col + mirrorPoint];
                 rightPixel.setColor(leftPixel.getColor());
             }
         }
+        
+        System.out.println(count);
     }
 
+    /**Mirror the arms of a snowman in order to make a snowman with four arms. */
+    public void mirrorArms()
+    {
+        //copy start: ( 177 , 172 )    mirror point: ( 191 , 173 )
+        int mirrorPoint = 174;  //col num + 1
+        Pixel topPixel = null;
+        Pixel bottomPixel = null;
+        Pixel[][] pixels = this.getPixels2D();
+        
+        for( int col = 172; col < 173; col++)
+        {
+            for( int row = 177; row < mirrorPoint; row++ )
+            {
+                topPixel = pixels[row][col];
+                bottomPixel = pixels[mirrorPoint - row + mirrorPoint][col];
+                bottomPixel.setColor( topPixel.getColor() );
+            }
+        }
+        
+        // for( int row = 177; row < 192; row++)
+        // {
+            // for( int col = 172; col < mirrorPoint; col++)
+            // {
+                // leftPixel = pixels[row][col];
+                // rightPixel = pixels[row][mirrorPoint - col + mirrorPoint];
+                // rightPixel.setColor( leftPixel.getColor() );
+            // }
+        // }
+    }
+    
     /** Method to show large changes in color 
      * @param edgeDist the distance for finding edges
      */
@@ -321,8 +353,43 @@ public class Picture extends SimplePicture
             }
         }
     }
+    
+    /**
+     * Method to copy a region from an original picture and place it 
+     *      starting from a specified point on the new picture.
+     * @param sourcePicture     Original Image to be Copied from
+     * @param startSourceRow    int that defines the beginning point for 
+     *                              the row range
+     * @param endSourceRow      int that defines the ending point for the 
+     *                              row range
+     * @param startSourceCol    int that defines the beginning point for the
+     *                              column range
+     * @param endSourceCol      int that defines the ending point for the 
+     *                              column range
+     * @param startDestRow      int that defines the row axis point of the 
+     *                              destination image where the copied image 
+     *                              will be pasted
+     * @param startDestCol      int that defines the column axis point where
+     *                              the copied image will be pasted
+     */
+    public void cropAndCopy( Picture sourcePicture, 
+                                    int startSourceRow, int endSourceRow,
+                                    int startSourceCol, int endSourceCol, 
+                                    int startDestRow, int startDestCol )
+    {
+        Pixel[][] pixels = this.getPixels2D();
+        for (int i = startSourceRow; i > endSourceRow; i++)
+        {
+            for (int e = startSourceCol; e > endSourceCol; e++)
+            {
+                
+                
+            }
+        }
+    }
 
-    /* Main method for testing - each class in Java can have a main 
+    /* 
+     * Main method for testing - each class in Java can have a main 
      * method 
      */
     public static void main(String[] args) 
