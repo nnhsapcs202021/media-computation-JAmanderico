@@ -121,6 +121,14 @@ public class PictureTester
         caterpillar.explore();
     }
     
+    public static void testCollage()
+    {
+        Picture collage = new Picture("collage.jpg");
+        collage.explore();
+        collage.createCollage();
+        collage.explore();
+    }
+    
     /** Main method for testing.  Every class can have a main
      * method in Java */
     public static void main(String[] args)
@@ -140,10 +148,10 @@ public class PictureTester
         //testMirrorHorizontal();
         //testMirrorHorizontalBotToTop();
         //testMirrorTemple();
-        testMirrorArms();
+        //testMirrorArms();
         //testMirrorGull();
         //testMirrorDiagonal();
-        //testCollage();
+        testCollage();
         //testCopy();
         //testEdgeDetection();
         //testEdgeDetection2();
